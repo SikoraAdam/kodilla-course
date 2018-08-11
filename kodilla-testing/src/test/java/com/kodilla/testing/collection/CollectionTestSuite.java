@@ -24,10 +24,10 @@ public class CollectionTestSuite
         ArrayList<Integer> testEmptyArrayList = new ArrayList<Integer>();
 
         //When
-        OddNumbersExterminator newArrayList = new OddNumbersExterminator(testArrayList);
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
         //Then
-        Assert.assertEquals(newArrayList.exterminate(testArrayList), testEmptyArrayList);
+        Assert.assertEquals(exterminator.exterminate(testArrayList), testEmptyArrayList);
     }
 
     @Test
@@ -36,9 +36,6 @@ public class CollectionTestSuite
         //Given
         ArrayList<Integer> testArrayListAllNumbers = new ArrayList<Integer>();
         ArrayList<Integer> testArrayListOddNumbers = new ArrayList<Integer>();
-
-        //When
-        OddNumbersExterminator newArrayList = new OddNumbersExterminator(testArrayListAllNumbers);
 
         for(int i = 0; i<10; i++)
         {
@@ -53,7 +50,10 @@ public class CollectionTestSuite
             }
         }
 
+        //When
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
+
         //Then
-        Assert.assertEquals(newArrayList.exterminate(testArrayListAllNumbers), testArrayListOddNumbers);
+        Assert.assertEquals(exterminator.exterminate(testArrayListAllNumbers), testArrayListOddNumbers);
     }
 }

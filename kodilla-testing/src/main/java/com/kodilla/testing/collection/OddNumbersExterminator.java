@@ -4,16 +4,10 @@ import java.util.*;
 
 public class OddNumbersExterminator
 {
-    ArrayList<Integer> testArrayList = new  ArrayList<Integer>();
-    ArrayList<Integer> finalArrayList = new  ArrayList<Integer>();
-
-    public OddNumbersExterminator(ArrayList<Integer> testArrayList)
-    {
-        this.testArrayList = testArrayList;
-    }
-
     public ArrayList<Integer> exterminate(ArrayList<Integer> numbers)
     {
+        ArrayList<Integer> finalArrayList = new  ArrayList<Integer>();
+
         for (int i = 0; i < numbers.size(); i++)
         {
             if (numbers.get(i)%2==0)
