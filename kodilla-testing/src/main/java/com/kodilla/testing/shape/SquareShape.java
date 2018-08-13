@@ -6,7 +6,7 @@ public class SquareShape implements Shape {
     double base;
 
     public SquareShape(String figure, double base) {
-        this.figure = this.figure;
+        this.figure = figure;
         this.base = base;
     }
 
