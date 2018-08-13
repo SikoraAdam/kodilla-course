@@ -3,13 +3,13 @@ package com.kodilla.testing.shape;
 public class TriangleShape implements Shape {
 
     String figure;
-    double a;
-    double h;
+    double base;
+    double height;
 
-    public TriangleShape(String figure, double a, double h) {
+    public TriangleShape(String figure, double base, double height) {
         this.figure = this.figure;
-        this.a = a;
-        this.h = h;
+        this.base = base;
+        this.height = height;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class TriangleShape implements Shape {
     }
 
     @Override
-    public double getField(double a, double h){
-        return ((a*h)/2);
+    public double getField(){
+        return ((base * height)/2);
     }
 }
