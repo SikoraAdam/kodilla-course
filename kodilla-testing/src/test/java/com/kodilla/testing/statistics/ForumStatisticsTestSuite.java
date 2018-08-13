@@ -4,7 +4,7 @@ import com.kodilla.testing.forum.statistics.ForumStatistics;
 import com.kodilla.testing.forum.statistics.Statistics;
 import org.junit.*;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class ForumStatisticsTestSuite {
     private static int testCounter = 0;
@@ -31,6 +31,8 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statsMock = mock(Statistics.class);
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+
+        //when(givenForumStats.getUsersQuantity()).thenReturn(100);
 
         //When
         int givenUsersQuantity = givenForumStats.getUsersQuantity();
