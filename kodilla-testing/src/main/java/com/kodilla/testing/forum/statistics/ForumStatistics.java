@@ -31,6 +31,16 @@ public class ForumStatistics implements Statistics{
         averageCommentsQuantityPerPost = commentsQuantity/postsQuantity;
     }
 
+    public void showStatistics()
+    {
+        System.out.println("liczba użytkowników - " + usersQuantity);
+        System.out.println("liczba postów - " + postsQuantity);
+        System.out.println("liczba komentarzy - " + commentsQuantity);
+        System.out.println("średnia liczba postów na użytkownika - " + averagePostsQuantity);
+        System.out.println("średnia liczba komentarzy na użytkownika - " + averageCommentsQuantity);
+        System.out.println("średnia liczba komentarzy na post - " + averageCommentsQuantityPerPost);
+    }
+
     @Override
     public List<String> usersNames() {
         List<String> list = new ArrayList<>();
@@ -44,7 +54,7 @@ public class ForumStatistics implements Statistics{
 
     @Override
     public int postsCount() {
-        return 100;
+        return 1000;
     }
 
     @Override

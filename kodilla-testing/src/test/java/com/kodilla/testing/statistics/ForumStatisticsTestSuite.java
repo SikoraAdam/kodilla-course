@@ -33,7 +33,7 @@ public class ForumStatisticsTestSuite {
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
         //When
-        int givenUsersQuantity = givenForumStats.getUsersQuantity();
+        int givenUsersQuantity = givenForumStats.usersNames().size();
 
         //Then
         Assert.assertEquals(100, givenUsersQuantity);
@@ -47,10 +47,10 @@ public class ForumStatisticsTestSuite {
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
         //When
-        int givenPostsQuantity = givenForumStats.getPostsQuantity();
+        int givenPostsQuantity = givenForumStats.postsCount();
 
         //Then
-        Assert.assertEquals(100, givenPostsQuantity);
+        Assert.assertEquals(1000, givenPostsQuantity);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ForumStatisticsTestSuite {
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
         //When
-        int givenCommentsQuantity = givenForumStats.getCommentsQuantity();
+        int givenCommentsQuantity = givenForumStats.commentsCount();
 
         //Then
         Assert.assertEquals(100, givenCommentsQuantity);
@@ -75,10 +75,10 @@ public class ForumStatisticsTestSuite {
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
         //When
-        double givenAveragePostsQuantity = givenForumStats.getAveragePostsQuantity();
+        double givenAveragePostsQuantity = givenForumStats.postsCount()/givenForumStats.usersNames().size();
 
         //Then
-        Assert.assertEquals(0, givenAveragePostsQuantity);
+        Assert.assertEquals(10.0, givenAveragePostsQuantity, 1.0);
     }
 
     @Test
@@ -89,10 +89,10 @@ public class ForumStatisticsTestSuite {
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
         //When
-        double testAverageCommentsQuantity = givenForumStats.getAverageCommentsQuantity();
+        double testAverageCommentsQuantity = givenForumStats.commentsCount()/givenForumStats.usersNames().size();
 
         //Then
-        Assert.assertEquals(0, testAverageCommentsQuantity);
+        Assert.assertEquals(1, testAverageCommentsQuantity, 1.0);
     }
 
     @Test
@@ -103,9 +103,9 @@ public class ForumStatisticsTestSuite {
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
         //When
-        double testAverageCommentsQuantityPerPost = givenForumStats.getAverageCommentsQuantityPerPost();
+        double testAverageCommentsQuantityPerPost = givenForumStats.commentsCount()/givenForumStats.postsCount();
 
         //Then
-        Assert.assertEquals(0, testAverageCommentsQuantityPerPost);
+        Assert.assertEquals(0.1, testAverageCommentsQuantityPerPost, 1.0);
     }
 }
