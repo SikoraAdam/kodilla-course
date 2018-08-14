@@ -1,38 +1,32 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class ForumStatistics implements Statistics{
+public class ForumStatistics implements Statistics {
 
     Statistics statistics;
-    int usersQuantity;
-    int postsQuantity;
-    int commentsQuantity;
+
+    List<String> usersList = usersNames();
+    int usersQuantity = usersList.size();
+    int postsQuantity = postsCount();
+    int commentsQuantity = commentsCount();
     double averagePostsQuantity;
     double averageCommentsQuantity;
     double averageCommentsQuantityPerPost;
 
-    public ForumStatistics(Statistics statistics)
-    {
+    public ForumStatistics(Statistics statistics) {
         this.statistics = statistics;
     }
 
-    public void calculateAdvStatistics(Statistics statistics)
-    {
+    public void calculateAdvStatistics(Statistics statistics) {
         this.statistics = statistics;
 
-        usersQuantity = usersNames().size();
-        postsQuantity = postsCount();
-        commentsQuantity = commentsCount();
-
-        averagePostsQuantity = postsQuantity/usersQuantity;
-        averageCommentsQuantity = commentsQuantity/usersQuantity;
-        averageCommentsQuantityPerPost = commentsQuantity/postsQuantity;
+        averagePostsQuantity = postsQuantity / usersQuantity;
+        averageCommentsQuantity = commentsQuantity / usersQuantity;
+        averageCommentsQuantityPerPost = commentsQuantity / postsQuantity;
     }
 
-    public void showStatistics()
-    {
+    public void showStatistics() {
         System.out.println("liczba użytkowników - " + usersQuantity);
         System.out.println("liczba postów - " + postsQuantity);
         System.out.println("liczba komentarzy - " + commentsQuantity);
@@ -44,9 +38,8 @@ public class ForumStatistics implements Statistics{
     @Override
     public List<String> usersNames() {
         List<String> list = new ArrayList<>();
-        for(int i=0; i<100; i++)
-        {
-            String word = "a"+i;
+        for (int i = 0; i < 100; i++) {
+            String word = "a" + i;
             list.add(word);
         }
         return list;
@@ -60,6 +53,10 @@ public class ForumStatistics implements Statistics{
     @Override
     public int commentsCount() {
         return 100;
+    }
+
+    public List<String> getUsersList() {
+        return usersList;
     }
 
     public int getUsersQuantity() {

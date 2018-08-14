@@ -4,7 +4,7 @@ import com.kodilla.testing.forum.statistics.ForumStatistics;
 import com.kodilla.testing.forum.statistics.Statistics;
 import org.junit.*;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class ForumStatisticsTestSuite {
     private static int testCounter = 0;
@@ -32,8 +32,10 @@ public class ForumStatisticsTestSuite {
         Statistics statsMock = mock(Statistics.class);
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
+        when(statsMock.usersNames()).thenReturn(givenForumStats.usersNames());
+
         //When
-        int givenUsersQuantity = givenForumStats.usersNames().size();
+        int givenUsersQuantity = givenForumStats.getUsersQuantity();
 
         //Then
         Assert.assertEquals(100, givenUsersQuantity);
@@ -46,8 +48,10 @@ public class ForumStatisticsTestSuite {
         Statistics statsMock = mock(Statistics.class);
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
+        when(statsMock.postsCount()).thenReturn(givenForumStats.postsCount());
+
         //When
-        int givenPostsQuantity = givenForumStats.postsCount();
+        int givenPostsQuantity = givenForumStats.getPostsQuantity();
 
         //Then
         Assert.assertEquals(1000, givenPostsQuantity);
@@ -59,6 +63,8 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statsMock = mock(Statistics.class);
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+
+        when(statsMock.commentsCount()).thenReturn(givenForumStats.commentsCount());
 
         //When
         int givenCommentsQuantity = givenForumStats.commentsCount();
@@ -74,8 +80,13 @@ public class ForumStatisticsTestSuite {
         Statistics statsMock = mock(Statistics.class);
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
+        when(statsMock.postsCount()).thenReturn(givenForumStats.postsCount());
+        when(statsMock.usersNames()).thenReturn(givenForumStats.usersNames());
+
+        givenForumStats.calculateAdvStatistics(statsMock);
+
         //When
-        double givenAveragePostsQuantity = givenForumStats.postsCount()/givenForumStats.usersNames().size();
+        double givenAveragePostsQuantity = givenForumStats.getAveragePostsQuantity();
 
         //Then
         Assert.assertEquals(10.0, givenAveragePostsQuantity, 1.0);
@@ -88,8 +99,13 @@ public class ForumStatisticsTestSuite {
         Statistics statsMock = mock(Statistics.class);
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
+        when(statsMock.commentsCount()).thenReturn(givenForumStats.commentsCount());
+        when(statsMock.usersNames()).thenReturn(givenForumStats.usersNames());
+
+        givenForumStats.calculateAdvStatistics(statsMock);
+
         //When
-        double testAverageCommentsQuantity = givenForumStats.commentsCount()/givenForumStats.usersNames().size();
+        double testAverageCommentsQuantity = givenForumStats.getAverageCommentsQuantity();
 
         //Then
         Assert.assertEquals(1, testAverageCommentsQuantity, 1.0);
@@ -102,8 +118,13 @@ public class ForumStatisticsTestSuite {
         Statistics statsMock = mock(Statistics.class);
         ForumStatistics givenForumStats = new ForumStatistics(statsMock);
 
+        when(statsMock.commentsCount()).thenReturn(givenForumStats.commentsCount());
+        when(statsMock.postsCount()).thenReturn(givenForumStats.postsCount());
+
+        givenForumStats.calculateAdvStatistics(statsMock);
+
         //When
-        double testAverageCommentsQuantityPerPost = givenForumStats.commentsCount()/givenForumStats.postsCount();
+        double testAverageCommentsQuantityPerPost = givenForumStats.getAverageCommentsQuantityPerPost();
 
         //Then
         Assert.assertEquals(0.1, testAverageCommentsQuantityPerPost, 1.0);
