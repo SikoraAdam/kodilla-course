@@ -3,13 +3,11 @@ package com.kodilla.testing.shape;
 public class CircleShape implements Shape {
 
     String figure;
-    double a;
-    double h;
+    double radius;
 
-    public CircleShape(String figure, double a, double h) {
-        this.figure = this.figure;
-        this.a = a;
-        this.h = h;
+    public CircleShape(String figure, double radius) {
+        this.figure = figure;
+        this.radius = radius;
     }
 
     @Override
@@ -18,7 +16,7 @@ public class CircleShape implements Shape {
     }
 
     @Override
-    public double getField(double a, double h){
-        return Math.PI*Math.sqrt(a);
+    public double getField(){
+        return Math.PI*Math.sqrt(radius);
     }
 }

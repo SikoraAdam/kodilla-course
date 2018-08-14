@@ -25,8 +25,8 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testAddShape() {
         //Given
-        SquareShape square = new SquareShape("square", 10.0, 0.0);
-        ShapeCollector newShape = new ShapeCollector(square);
+        SquareShape square = new SquareShape("square", 10.0);
+        ShapeCollector newShape = new ShapeCollector();
 
         //When
         newShape.addFigure(square);
@@ -38,8 +38,8 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testRemoveShape() {
         //Given
-        SquareShape square = new SquareShape("square", 10.0, 0.0);
-        ShapeCollector newShape = new ShapeCollector(square);
+        SquareShape square = new SquareShape("square", 10.0);
+        ShapeCollector newShape = new ShapeCollector();
 
         newShape.addFigure(square);
 
@@ -53,8 +53,8 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testGetShape() {
         //Given
-        SquareShape square = new SquareShape("square", 10.0, 0.0);
-        ShapeCollector newShape = new ShapeCollector(square);
+        SquareShape square = new SquareShape("square", 10.0);
+        ShapeCollector newShape = new ShapeCollector();
 
         newShape.addFigure(square);
 

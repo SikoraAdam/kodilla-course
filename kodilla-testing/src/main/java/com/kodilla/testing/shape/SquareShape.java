@@ -3,13 +3,11 @@ package com.kodilla.testing.shape;
 public class SquareShape implements Shape {
 
     String figure;
-    double a;
-    double h;
+    double base;
 
-    public SquareShape(String figure, double a, double h) {
-        this.figure = this.figure;
-        this.a = a;
-        this.h = h;
+    public SquareShape(String figure, double base) {
+        this.figure = figure;
+        this.base = base;
     }
 
     @Override
@@ -18,7 +16,7 @@ public class SquareShape implements Shape {
     }
 
     @Override
-    public double getField(double a, double h){
-        return Math.sqrt(a);
+    public double getField(){
+        return Math.sqrt(base);
     }
 }

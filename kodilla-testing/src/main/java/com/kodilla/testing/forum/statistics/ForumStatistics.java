@@ -6,9 +6,9 @@ import java.util.List;
 public class ForumStatistics implements Statistics{
 
     Statistics statistics;
-    int usersQuantity;
-    int postsQuantity;
-    int commentsQuantity;
+    int usersQuantity = usersNames().size();
+    int postsQuantity = postsCount();
+    int commentsQuantity = commentsCount();
     double averagePostsQuantity;
     double averageCommentsQuantity;
     double averageCommentsQuantityPerPost;
@@ -21,10 +21,6 @@ public class ForumStatistics implements Statistics{
     public void calculateAdvStatistics(Statistics statistics)
     {
         this.statistics = statistics;
-
-        usersQuantity = usersNames().size();
-        postsQuantity = postsCount();
-        commentsQuantity = commentsCount();
 
         averagePostsQuantity = postsQuantity/usersQuantity;
         averageCommentsQuantity = commentsQuantity/usersQuantity;
