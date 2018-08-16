@@ -4,35 +4,29 @@ import java.util.*;
 
 public class ShapeCollector {
 
-    ArrayList<Shape> GeoFigures = new ArrayList<Shape>();
-    String figure;
-    double a;
-    double h;
-
-    public ShapeCollector(Shape shape) {
-        this.figure = figure;
-        this.a = a;
-        this.h = h;
-    }
+    ArrayList<Shape> geoFigures = new ArrayList<Shape>();
 
     public void addFigure(Shape shape){
-        GeoFigures.add(shape);
+        geoFigures.add(shape);
     }
+
     public void removeFigure(Shape shape){
-        GeoFigures.remove(shape);
+        geoFigures.remove(shape);
     }
+
     public Shape getFigure(int n){
-        return GeoFigures.get(n);
+        return geoFigures.get(n);
     }
+
     public void showFigures(){
-        for(int i=0; i<GeoFigures.size(); i++)
+        for(int i = 0; i< geoFigures.size(); i++)
         {
-            System.out.println(GeoFigures.get(i));
+            System.out.println(geoFigures.get(i));
         }
     }
 
     public int getArraySize(){
-        return GeoFigures.size();
+        return geoFigures.size();
     }
 
 }

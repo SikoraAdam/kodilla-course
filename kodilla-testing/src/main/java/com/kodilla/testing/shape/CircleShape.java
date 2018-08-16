@@ -6,7 +6,7 @@ public class CircleShape implements Shape {
     double radius;
 
     public CircleShape(String figure, double radius) {
-        this.figure = this.figure;
+        this.figure = figure;
         this.radius = radius;
     }
 

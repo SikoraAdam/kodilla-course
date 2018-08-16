@@ -7,7 +7,7 @@ public class TriangleShape implements Shape {
     double height;
 
     public TriangleShape(String figure, double base, double height) {
-        this.figure = this.figure;
+        this.figure = figure;
         this.base = base;
         this.height = height;
     }
