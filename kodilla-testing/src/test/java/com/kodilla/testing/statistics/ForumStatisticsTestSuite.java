@@ -4,6 +4,8 @@ import com.kodilla.testing.forum.statistics.ForumStatistics;
 import com.kodilla.testing.forum.statistics.Statistics;
 import org.junit.*;
 
+import java.util.*;
+
 import static org.mockito.Mockito.*;
 
 public class ForumStatisticsTestSuite {
@@ -25,108 +27,214 @@ public class ForumStatisticsTestSuite {
         System.out.println("Preparing to execute test #" + testCounter);
     }
 
-    @Test
-    public void testUsersQuantity()
+    @Test (expected = AssertionError.class )
+    public void testWhenPostsQuantityIs0()
     {
         //Given
         Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumStatistics givenForumStats = new ForumStatistics();
 
-        when(statsMock.usersNames()).thenReturn(givenForumStats.usersNames());
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String word = "a" + i;
+            users.add(word);
+        }
+
+        when(statsMock.usersNames()).thenReturn(users);
+        when(statsMock.postsCount()).thenReturn(0);
+        when(statsMock.commentsCount()).thenReturn(200);
 
         //When
-        int givenUsersQuantity = givenForumStats.getUsersQuantity();
-
-        //Then
-        Assert.assertEquals(100, givenUsersQuantity);
-    }
-
-    @Test
-    public void testPostsQuantity()
-    {
-        //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
-
-        when(statsMock.postsCount()).thenReturn(givenForumStats.postsCount());
-
-        //When
-        int givenPostsQuantity = givenForumStats.getPostsQuantity();
-
-        //Then
-        Assert.assertEquals(1000, givenPostsQuantity);
-    }
-
-    @Test
-    public void testCommentsQuantity()
-    {
-        //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
-
-        when(statsMock.commentsCount()).thenReturn(givenForumStats.commentsCount());
-
-        //When
-        int givenCommentsQuantity = givenForumStats.commentsCount();
-
-        //Then
-        Assert.assertEquals(100, givenCommentsQuantity);
-    }
-
-    @Test
-    public void testAveragePostsQuantity()
-    {
-        //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
-
-        when(statsMock.postsCount()).thenReturn(givenForumStats.postsCount());
-        when(statsMock.usersNames()).thenReturn(givenForumStats.usersNames());
-
         givenForumStats.calculateAdvStatistics(statsMock);
 
-        //When
-        double givenAveragePostsQuantity = givenForumStats.getAveragePostsQuantity();
-
         //Then
-        Assert.assertEquals(10.0, givenAveragePostsQuantity, 1.0);
+        Assert.assertEquals(100, givenForumStats.getUsersQuantity());
+        Assert.assertEquals(0, givenForumStats.getPostsQuantity());
+        Assert.assertEquals(200, givenForumStats.getCommentsQuantity());
+        Assert.assertEquals(0, givenForumStats.getAveragePostsQuantity(),0.0);
+        Assert.assertEquals(2, givenForumStats.getAverageCommentsQuantity(),0.0);
+        try {
+            Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantityPerPost(),0.0);
+        }
+        catch (Exception e) {
+            new AssertionError();
+        }
     }
 
     @Test
-    public void testAverageCommentsQuantity()
-    {
+    public void testWhenPostsQuantityIs1000() {
         //Given
         Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumStatistics givenForumStats = new ForumStatistics();
 
-        when(statsMock.commentsCount()).thenReturn(givenForumStats.commentsCount());
-        when(statsMock.usersNames()).thenReturn(givenForumStats.usersNames());
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String word = "a" + i;
+            users.add(word);
+        }
 
-        givenForumStats.calculateAdvStatistics(statsMock);
+        when(statsMock.usersNames()).thenReturn(users);
+        when(statsMock.postsCount()).thenReturn(1000);
+        when(statsMock.commentsCount()).thenReturn(200);
 
         //When
-        double testAverageCommentsQuantity = givenForumStats.getAverageCommentsQuantity();
+        givenForumStats.calculateAdvStatistics(statsMock);
 
         //Then
-        Assert.assertEquals(1, testAverageCommentsQuantity, 1.0);
+        Assert.assertEquals(100, givenForumStats.getUsersQuantity());
+        Assert.assertEquals(1000, givenForumStats.getPostsQuantity());
+        Assert.assertEquals(200, givenForumStats.getCommentsQuantity());
+        Assert.assertEquals(10, givenForumStats.getAveragePostsQuantity(), 0.0);
+        Assert.assertEquals(2, givenForumStats.getAverageCommentsQuantity(), 0.0);
+        Assert.assertEquals(0.2, givenForumStats.getAverageCommentsQuantityPerPost(), 0.0);
     }
 
     @Test
-    public void testAverageCommentsQuantityPerPost()
+    public void testWhenCommentsQuantityIs0()
     {
         //Given
         Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumStatistics givenForumStats = new ForumStatistics();
 
-        when(statsMock.commentsCount()).thenReturn(givenForumStats.commentsCount());
-        when(statsMock.postsCount()).thenReturn(givenForumStats.postsCount());
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String word = "a" + i;
+            users.add(word);
+        }
 
-        givenForumStats.calculateAdvStatistics(statsMock);
+        when(statsMock.usersNames()).thenReturn(users);
+        when(statsMock.postsCount()).thenReturn(100);
+        when(statsMock.commentsCount()).thenReturn(0);
 
         //When
-        double testAverageCommentsQuantityPerPost = givenForumStats.getAverageCommentsQuantityPerPost();
+        givenForumStats.calculateAdvStatistics(statsMock);
 
         //Then
-        Assert.assertEquals(0.1, testAverageCommentsQuantityPerPost, 1.0);
+        Assert.assertEquals(100, givenForumStats.getUsersQuantity());
+        Assert.assertEquals(100, givenForumStats.getPostsQuantity());
+        Assert.assertEquals(0, givenForumStats.getCommentsQuantity());
+        Assert.assertEquals(1, givenForumStats.getAveragePostsQuantity(),0.0);
+        Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantity(),0.0);
+        Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantityPerPost(),0.0);
+    }
+
+    @Test
+    public void testWhenCommentsQuantityIsSmallerThanPosts() {
+        //Given
+        Statistics statsMock = mock(Statistics.class);
+        ForumStatistics givenForumStats = new ForumStatistics();
+
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String word = "a" + i;
+            users.add(word);
+        }
+
+        when(statsMock.usersNames()).thenReturn(users);
+        when(statsMock.postsCount()).thenReturn(10000);
+        when(statsMock.commentsCount()).thenReturn(50);
+
+        //When
+        givenForumStats.calculateAdvStatistics(statsMock);
+
+        //Then
+        Assert.assertEquals(100, givenForumStats.getUsersQuantity());
+        Assert.assertEquals(10000, givenForumStats.getPostsQuantity());
+        Assert.assertEquals(50, givenForumStats.getCommentsQuantity());
+        Assert.assertEquals(100, givenForumStats.getAveragePostsQuantity(), 0.0);
+        Assert.assertEquals(0.5, givenForumStats.getAverageCommentsQuantity(), 0.0);
+        Assert.assertEquals(0.005, givenForumStats.getAverageCommentsQuantityPerPost(), 0.0);
+    }
+
+    @Test
+    public void testWhenCommentsQuantityIsBiggerThanPosts() {
+        //Given
+        Statistics statsMock = mock(Statistics.class);
+        ForumStatistics givenForumStats = new ForumStatistics();
+
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String word = "a" + i;
+            users.add(word);
+        }
+
+        when(statsMock.usersNames()).thenReturn(users);
+        when(statsMock.postsCount()).thenReturn(50);
+        when(statsMock.commentsCount()).thenReturn(10000);
+
+        //When
+        givenForumStats.calculateAdvStatistics(statsMock);
+
+        //Then
+        Assert.assertEquals(100, givenForumStats.getUsersQuantity());
+        Assert.assertEquals(50, givenForumStats.getPostsQuantity());
+        Assert.assertEquals(10000, givenForumStats.getCommentsQuantity());
+        Assert.assertEquals(0.5, givenForumStats.getAveragePostsQuantity(), 0.0);
+        Assert.assertEquals(100, givenForumStats.getAverageCommentsQuantity(), 0.0);
+        Assert.assertEquals(200, givenForumStats.getAverageCommentsQuantityPerPost(), 0.0);
+    }
+
+    @Test (expected = AssertionError.class )
+    public void testWhenUsersQuantityIs0()
+    {
+        //Given
+        Statistics statsMock = mock(Statistics.class);
+        ForumStatistics givenForumStats = new ForumStatistics();
+
+        List<String> users = new ArrayList<>();
+
+        when(statsMock.usersNames()).thenReturn(users);
+        when(statsMock.postsCount()).thenReturn(100);
+        when(statsMock.commentsCount()).thenReturn(200);
+
+        //When
+        givenForumStats.calculateAdvStatistics(statsMock);
+
+        //Then
+        Assert.assertEquals(0, givenForumStats.getUsersQuantity());
+        Assert.assertEquals(100, givenForumStats.getPostsQuantity());
+        Assert.assertEquals(200, givenForumStats.getCommentsQuantity());
+        try {
+            Assert.assertEquals(0, givenForumStats.getAveragePostsQuantity(),0.0);
+        }
+        catch (Exception e) {
+            new AssertionError();
+        }
+        try {
+            Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantity(),0.0);
+        }
+        catch (Exception e) {
+            new AssertionError();
+        }
+        Assert.assertEquals(2, givenForumStats.getAverageCommentsQuantityPerPost(),0.0);
+    }
+
+    @Test
+    public void testWhenUsersQuantityIs100()
+    {
+        //Given
+        Statistics statsMock = mock(Statistics.class);
+        ForumStatistics givenForumStats = new ForumStatistics();
+
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            String word = "a" + i;
+            users.add(word);
+        }
+
+        when(statsMock.usersNames()).thenReturn(users);
+        when(statsMock.postsCount()).thenReturn(100);
+        when(statsMock.commentsCount()).thenReturn(200);
+
+        //When
+        givenForumStats.calculateAdvStatistics(statsMock);
+
+        //Then
+        Assert.assertEquals(100, givenForumStats.getUsersQuantity());
+        Assert.assertEquals(100, givenForumStats.getPostsQuantity());
+        Assert.assertEquals(200, givenForumStats.getCommentsQuantity());
+        Assert.assertEquals(2, givenForumStats.getAverageCommentsQuantity(),0.0);
+        Assert.assertEquals(1, givenForumStats.getAveragePostsQuantity(),0.0);
+        Assert.assertEquals(2, givenForumStats.getAverageCommentsQuantityPerPost(),0.0);
     }
 }

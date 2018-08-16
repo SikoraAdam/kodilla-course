@@ -2,28 +2,24 @@ package com.kodilla.testing.forum.statistics;
 
 import java.util.*;
 
-public class ForumStatistics implements Statistics {
+public class ForumStatistics {
 
-    Statistics statistics;
-
-    List<String> usersList = usersNames();
-    int usersQuantity = usersList.size();
-    int postsQuantity = postsCount();
-    int commentsQuantity = commentsCount();
+    int usersQuantity;
+    int postsQuantity;
+    int commentsQuantity;
     double averagePostsQuantity;
     double averageCommentsQuantity;
     double averageCommentsQuantityPerPost;
 
-    public ForumStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
-
     public void calculateAdvStatistics(Statistics statistics) {
-        this.statistics = statistics;
 
-        averagePostsQuantity = postsQuantity / usersQuantity;
-        averageCommentsQuantity = commentsQuantity / usersQuantity;
-        averageCommentsQuantityPerPost = commentsQuantity / postsQuantity;
+        usersQuantity = statistics.usersNames().size();
+        postsQuantity = statistics.postsCount();
+        commentsQuantity = statistics.commentsCount();
+
+        averagePostsQuantity = (double) postsQuantity / usersQuantity;
+        averageCommentsQuantity = (double) commentsQuantity / usersQuantity;
+        averageCommentsQuantityPerPost = (double) commentsQuantity / postsQuantity;
     }
 
     public void showStatistics() {
@@ -33,30 +29,6 @@ public class ForumStatistics implements Statistics {
         System.out.println("średnia liczba postów na użytkownika - " + averagePostsQuantity);
         System.out.println("średnia liczba komentarzy na użytkownika - " + averageCommentsQuantity);
         System.out.println("średnia liczba komentarzy na post - " + averageCommentsQuantityPerPost);
-    }
-
-    @Override
-    public List<String> usersNames() {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            String word = "a" + i;
-            list.add(word);
-        }
-        return list;
-    }
-
-    @Override
-    public int postsCount() {
-        return 1000;
-    }
-
-    @Override
-    public int commentsCount() {
-        return 100;
-    }
-
-    public List<String> getUsersList() {
-        return usersList;
     }
 
     public int getUsersQuantity() {
