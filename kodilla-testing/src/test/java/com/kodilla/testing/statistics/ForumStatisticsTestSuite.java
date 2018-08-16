@@ -53,12 +53,7 @@ public class ForumStatisticsTestSuite {
         Assert.assertEquals(200, givenForumStats.getCommentsQuantity());
         Assert.assertEquals(0, givenForumStats.getAveragePostsQuantity(),0.0);
         Assert.assertEquals(2, givenForumStats.getAverageCommentsQuantity(),0.0);
-        try {
-            Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantityPerPost(),0.0);
-        }
-        catch (Exception e) {
-            new AssertionError();
-        }
+        Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantityPerPost(),0.0);
     }
 
     @Test
@@ -193,19 +188,8 @@ public class ForumStatisticsTestSuite {
         //Then
         Assert.assertEquals(0, givenForumStats.getUsersQuantity());
         Assert.assertEquals(100, givenForumStats.getPostsQuantity());
-        Assert.assertEquals(200, givenForumStats.getCommentsQuantity());
-        try {
-            Assert.assertEquals(0, givenForumStats.getAveragePostsQuantity(),0.0);
-        }
-        catch (Exception e) {
-            new AssertionError();
-        }
-        try {
-            Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantity(),0.0);
-        }
-        catch (Exception e) {
-            new AssertionError();
-        }
+        Assert.assertEquals(200, givenForumStats.getCommentsQuantity());Assert.assertEquals(0, givenForumStats.getAveragePostsQuantity(),0.0);
+        Assert.assertEquals(0, givenForumStats.getAverageCommentsQuantity(),0.0);
         Assert.assertEquals(2, givenForumStats.getAverageCommentsQuantityPerPost(),0.0);
     }
 
