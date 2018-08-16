@@ -1,51 +1,34 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class ForumStatistics implements Statistics{
+public class ForumStatistics {
 
-    Statistics statistics;
-    int usersQuantity = usersNames().size();
-    int postsQuantity = postsCount();
-    int commentsQuantity = commentsCount();
+    int usersQuantity;
+    int postsQuantity;
+    int commentsQuantity;
     double averagePostsQuantity;
     double averageCommentsQuantity;
     double averageCommentsQuantityPerPost;
 
-    public ForumStatistics(Statistics statistics)
-    {
-        this.statistics = statistics;
+    public void calculateAdvStatistics(Statistics statistics) {
+
+        usersQuantity = statistics.usersNames().size();
+        postsQuantity = statistics.postsCount();
+        commentsQuantity = statistics.commentsCount();
+
+        averagePostsQuantity = (double) postsQuantity / usersQuantity;
+        averageCommentsQuantity = (double) commentsQuantity / usersQuantity;
+        averageCommentsQuantityPerPost = (double) commentsQuantity / postsQuantity;
     }
 
-    public void calculateAdvStatistics(Statistics statistics)
-    {
-        this.statistics = statistics;
-
-        averagePostsQuantity = postsQuantity/usersQuantity;
-        averageCommentsQuantity = commentsQuantity/usersQuantity;
-        averageCommentsQuantityPerPost = commentsQuantity/postsQuantity;
-    }
-
-    @Override
-    public List<String> usersNames() {
-        List<String> list = new ArrayList<>();
-        for(int i=0; i<100; i++)
-        {
-            String word = "a"+i;
-            list.add(word);
-        }
-        return list;
-    }
-
-    @Override
-    public int postsCount() {
-        return 100;
-    }
-
-    @Override
-    public int commentsCount() {
-        return 100;
+    public void showStatistics() {
+        System.out.println("liczba użytkowników - " + usersQuantity);
+        System.out.println("liczba postów - " + postsQuantity);
+        System.out.println("liczba komentarzy - " + commentsQuantity);
+        System.out.println("średnia liczba postów na użytkownika - " + averagePostsQuantity);
+        System.out.println("średnia liczba komentarzy na użytkownika - " + averageCommentsQuantity);
+        System.out.println("średnia liczba komentarzy na post - " + averageCommentsQuantityPerPost);
     }
 
     public int getUsersQuantity() {

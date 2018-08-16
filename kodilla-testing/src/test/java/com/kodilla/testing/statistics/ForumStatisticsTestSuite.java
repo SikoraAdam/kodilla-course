@@ -1,12 +1,12 @@
-package com.kodilla.testing.statistics;
+package com.kodilla.testing.forum.tdd;
 
-import com.kodilla.testing.forum.statistics.ForumStatistics;
-import com.kodilla.testing.forum.statistics.Statistics;
+import com.kodilla.testing.forum.ForumComment;
+import com.kodilla.testing.forum.ForumPost;
+import com.kodilla.testing.forum.ForumUser;
 import org.junit.*;
 
-import static org.mockito.Mockito.*;
-
-public class ForumStatisticsTestSuite {
+//Test suite for classes of Forum
+public class ForumTestSuite {
     private static int testCounter = 0;
 
     @BeforeClass
@@ -26,88 +26,128 @@ public class ForumStatisticsTestSuite {
     }
 
     @Test
-    public void testUsersQuantity()
-    {
+    public void testAddPost() {
         //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
-
-        //when(givenForumStats.getUsersQuantity()).thenReturn(100);
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
 
         //When
-        int givenUsersQuantity = givenForumStats.getUsersQuantity();
+        forumUser.addPost("mrsmith",
+                "Hello everyone, this is my first contribution here!");
 
         //Then
-        Assert.assertEquals(100, givenUsersQuantity);
+        Assert.assertEquals(1, forumUser.getPostsQuantity());
     }
 
     @Test
-    public void testPostsQuantity()
-    {
+    public void testAddComment() {
         //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
 
         //When
-        int givenPostsQuantity = givenForumStats.getPostsQuantity();
+        forumUser.addComment(thePost, "mrsmith", "Thank you for all good words!");
 
         //Then
-        Assert.assertEquals(100, givenPostsQuantity);
+        Assert.assertEquals(1, forumUser.getCommentsQuantity());
     }
 
     @Test
-    public void testCommentsQuantity()
-    {
+    public void testGetPost() {
         //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
+        forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
 
         //When
-        int givenCommentsQuantity = givenForumStats.getCommentsQuantity();
+        ForumPost retrievedPost;
+        retrievedPost = forumUser.getPost(0);
 
         //Then
-        Assert.assertEquals(100, givenCommentsQuantity);
+        Assert.assertEquals(thePost, retrievedPost);
     }
 
     @Test
-    public void testAveragePostsQuantity()
-    {
+    public void testGetComment() {
         //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
+        ForumComment theComment = new ForumComment(thePost, "mrsmith",
+                "Thank you for all good words!");
+        forumUser.addComment(thePost, theComment.getAuthor(),
+                theComment.getCommentBody());
 
         //When
-        double givenAveragePostsQuantity = givenForumStats.getAveragePostsQuantity();
+        ForumComment retrievedComment = forumUser.getComment(0);
 
         //Then
-        Assert.assertEquals(0, givenAveragePostsQuantity);
+        Assert.assertEquals(theComment, retrievedComment);
     }
 
     @Test
-    public void testAverageCommentsQuantity()
-    {
+    public void testRemovePostNotExisting() {
         //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
 
         //When
-        double testAverageCommentsQuantity = givenForumStats.getAverageCommentsQuantity();
+        boolean result = forumUser.removePost(thePost);
 
         //Then
-        Assert.assertEquals(0, testAverageCommentsQuantity);
+        Assert.assertFalse(result);
     }
 
     @Test
-    public void testAverageCommentsQuantityPerPost()
-    {
+    public void testRemoveCommentNotExisting() {
         //Given
-        Statistics statsMock = mock(Statistics.class);
-        ForumStatistics givenForumStats = new ForumStatistics(statsMock);
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
+        ForumComment theComment = new ForumComment(thePost, "mrsmith",
+                "Thank you for all good words!");
 
         //When
-        double testAverageCommentsQuantityPerPost = givenForumStats.getAverageCommentsQuantityPerPost();
+        boolean result = forumUser.removeComment(theComment);
 
         //Then
-        Assert.assertEquals(0, testAverageCommentsQuantityPerPost);
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void testRemovePost() {
+        //Given
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
+        forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
+
+        //When
+        boolean result = forumUser.removePost(thePost);
+
+        //Then
+        Assert.assertTrue(result);
+        Assert.assertEquals(0, forumUser.getPostsQuantity());
+    }
+
+    @Test
+    public void testRemoveComment() {
+        //Given
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone, " +
+                "this is my first contribution here!", "mrsmith");
+        ForumComment theComment = new ForumComment(thePost, "mrsmith",
+                "Thank you for all good words!");
+        forumUser.addComment(thePost, theComment.getAuthor(),
+                theComment.getCommentBody());
+
+        //When
+        boolean result = forumUser.removeComment(theComment);
+
+        //Then
+        Assert.assertTrue(result);
+        Assert.assertEquals(0, forumUser.getCommentsQuantity());
     }
 }
