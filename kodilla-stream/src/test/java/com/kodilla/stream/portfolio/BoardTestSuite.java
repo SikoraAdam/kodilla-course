@@ -150,6 +150,7 @@ public class BoardTestSuite {
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> t.getCreated())
                 .filter(d -> d.)
+                .count();
 
         //Then
         Assert.assertEquals();
