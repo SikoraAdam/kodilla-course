@@ -12,26 +12,24 @@ public class WorldTestSuite {
     public void testGetPeopleQuantity() {
         //Given
 
-        Country poland = new Country();
-        Country germany = new Country();
-        Country russia = new Country();
+        List<Country> theContinentEurope = new ArrayList<>();
+        List<Continent> theWorld = new ArrayList<>();
 
-        poland.peopleQuantity = new BigDecimal("123456789");
-        germany.peopleQuantity = new BigDecimal("456146515");
-        russia.peopleQuantity = new BigDecimal("7899874798");
+        Country poland = new Country(new BigDecimal("123456789"));
+        Country germany = new Country(new BigDecimal("456146515"));
+        Country russia = new Country(new BigDecimal("7899874798"));
 
-        List<Country> countriesList = new ArrayList<>();
-        List<List<Country>> continentsList = new ArrayList<>();
+        Continent Europe = new Continent(theContinentEurope);
 
-        countriesList.add(poland);
-        countriesList.add(germany);
-        countriesList.add(russia);
-        continentsList.add(countriesList);
+        theContinentEurope.add(poland);
+        theContinentEurope.add(germany);
+        theContinentEurope.add(russia);
+        theWorld.add(Europe);
 
         //When
-        BigDecimal totalPopulation = continentsList.stream()
-                .flatMap(continent -> continent.stream())
-                .map(country -> country.getPeopleQuantity())
+        BigDecimal totalPopulation = theWorld.stream()
+                .flatMap(continent -> continent.theContinent.stream())
+                .map(theCountry -> theCountry.getPeopleQuantity())
                 .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
 
         //Then
