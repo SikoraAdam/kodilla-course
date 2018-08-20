@@ -6,17 +6,23 @@ import java.util.stream.IntStream;
 public interface ArrayOperations {
     static double getAverage(int[] numbers){
 
-        IntStream.range(0, numbers.length)
-                .forEach(i -> System.out.println(numbers[i]));
+        if (numbers.length > 0) {
+            IntStream.range(0, numbers.length)
+                    .forEach(i -> System.out.println(numbers[i]));
 
-        IntStream.range(0, numbers.length)
-                .map(i -> numbers[i])
-                .average();
+            IntStream.range(0, numbers.length)
+                    .map(i -> numbers[i])
+                    .average();
 
-        OptionalDouble optDouble = IntStream.range(0, numbers.length)
-                .map(i -> numbers[i])
-                .average();
+            OptionalDouble optDouble = IntStream.range(0, numbers.length)
+                    .map(i -> numbers[i])
+                    .average();
 
-        return optDouble.getAsDouble();
+            return optDouble.getAsDouble();
+        }
+        else
+        {
+            throw new IllegalArgumentException("illegal array size");
+        }
     }
 }
