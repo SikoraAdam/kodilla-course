@@ -40,6 +40,8 @@ public class BookTestSuite {
         Assert.assertEquals(3, numberOfBooksPublicatedAfter2007);
     }
 
+
+    //To samo co wyzej
     @Test
     public void testGetListUsingIntStream2() {
         //Given
