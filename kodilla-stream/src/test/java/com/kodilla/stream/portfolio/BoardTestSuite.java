@@ -148,24 +148,15 @@ public class BoardTestSuite {
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
 
-        long elements = project.getTaskLists().stream()
+        double averageNrOfDays = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .count();
-
-        //nie wiem jak to zrobic, probowalem w ten sposob. count() jest tutaj zaslepka do push'a
-        long time = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .map(t -> (t.getCreated().getDayOfYear() - LocalDate.now().getDayOfYear()))
-                .count();
-
-        double aver = (double)elements/time;
-
+                .map(t -> (LocalDate.now().getDayOfYear() - t.getCreated().getDayOfYear()))
+                .mapToDouble(i->i)
+                .average()
+                .orElseThrow(IllegalStateException::new);
 
         //Then
-        System.out.println(elements);
-        System.out.println(time);
-        //Assert.assertEquals(2.0, aver, 0.001);
+        Assert.assertEquals(10.0, averageNrOfDays, 0.001);
     }
 }
