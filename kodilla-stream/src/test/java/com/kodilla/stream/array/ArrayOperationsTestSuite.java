@@ -3,22 +3,18 @@ package com.kodilla.stream.array;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
-import java.util.stream.IntStream;
-
 public class ArrayOperationsTestSuite {
 
     @Test
-    public void testGetAverage() {
+    public void testGetAverage(){
+
         //Given
-        int givenArray[] = {10,20,30,40,50,60,71,80,90,91};
-        double givenArrayAverage = ArrayOperations.getAverage(givenArray);
+        int tab[] = {1,3,5,7,9};
 
         //When
-        int testingArray[] = {10,20,30,40,50,60,71,80,90,91};
-        double expectedAverage = ArrayOperations.getAverage(testingArray);
+        double testAverage = ArrayOperations.getAverage(tab);
 
         //Then
-        Assert.assertEquals(54.20, expectedAverage, 0.0);
+        Assert.assertEquals(5.0, testAverage, 0.0);
     }
 }
