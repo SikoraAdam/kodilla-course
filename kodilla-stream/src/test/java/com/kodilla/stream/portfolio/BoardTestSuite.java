@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.averagingDouble;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
@@ -146,14 +147,24 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long timeForTasks = project.getTaskLists().stream()
+
+        long elements = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(t -> t.getCreated())
-                .
                 .count();
 
+        long time = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> (t.getCreated().getDayOfYear() - LocalDate.now().getDayOfYear()))
+                .count();
+
+        double aver = (double)elements/time;
+
+
         //Then
-        Assert.assertEquals();
+        System.out.println(elements);
+        System.out.println(time);
+        //Assert.assertEquals(2.0, aver, 0.001);
     }
 }
