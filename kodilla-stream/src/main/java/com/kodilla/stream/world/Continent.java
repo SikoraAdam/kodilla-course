@@ -4,9 +4,10 @@ import java.util.*;
 
 public class Continent {
 
-    List<Country> countriesList = new ArrayList<>();
+    List<Country> theContinent = new ArrayList<>();
 
-    public Continent(List<Country> countriesList) {
-        this.countriesList = countriesList;
+    public Continent(List<Country> theContinent) {
+
+        this.theContinent = theContinent;
     }
 }
