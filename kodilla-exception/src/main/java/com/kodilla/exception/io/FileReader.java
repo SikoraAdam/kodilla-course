@@ -18,7 +18,7 @@ public class FileReader {
         } catch (IOException e) {
             System.out.println(e);
         } finally {
-            System.out.println("bye");
+            System.out.println("bye bye");
         }
     }
 }
