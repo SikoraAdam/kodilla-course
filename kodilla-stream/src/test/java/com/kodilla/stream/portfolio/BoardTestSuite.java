@@ -153,7 +153,7 @@ public class BoardTestSuite {
                 .flatMap(tl -> tl.getTasks().stream())
                 .count();
 
-        //nie wiem jak to zrobic, probowalem w ten sposob. count() jest tutaj zaslepka do pull'a
+        //nie wiem jak to zrobic, probowalem w ten sposob. count() jest tutaj zaslepka do push'a
         long time = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
