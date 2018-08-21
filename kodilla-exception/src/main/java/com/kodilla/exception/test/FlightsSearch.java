@@ -4,35 +4,28 @@ import java.util.*;
 
 public class FlightsSearch {
 
-    public static void findFilght (Flight flight) throws RouteNotFoundException {
-
-        Map<String, Boolean> airportsAvailable = new HashMap<>();
-        airportsAvailable.containsKey("Warsaw");
-        airportsAvailable.containsKey("Cracov");
-
-        if(airportsAvailable.containsKey(flight.getDepartureAirport()) == true)
-            airportsAvailable.containsValue(true);
-
-    }
-
     public static void main(String args[]) {
 
-        Flight flight1 = new Flight("Warsaw", "Cracov");
-        Flight flight2 = new Flight("Gdynia", "Cracov");
-
-        try {
-            findFilght(flight1);
-        } catch (RouteNotFoundException e) {
-            System.out.println("Unknown airport.");
-        }
-
-        try {
-            findFilght(flight2);
-        } catch (RouteNotFoundException e) {
-            System.out.println("Unknown airport.");
-        }
+        Flight flight1 = new Flight("WarsawAirport", "CracovAirport");
+        Flight flight2 = new Flight("GdyniaAirport", "WarsawAirport");
 
     }
 
+    public void findFlight(Flight flight) {
 
+        Map<String, Boolean> airportsAvaiable = new HashMap<>();
+        airportsAvaiable.put("WarsawAirport", true);
+        airportsAvaiable.put("CracovAirport", false);
+
+        try {
+            for (String airport : airportsAvaiable.keySet()) {
+                if (airportsAvaiable.containsKey(flight.getArrivalAirport()) && airportsAvaiable.containsKey(flight.getDepartureAirport()))
+                    System.out.println("Flight available.");
+                else
+                    System.out.println("Flight not available.");
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }
