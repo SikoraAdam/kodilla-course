@@ -23,6 +23,7 @@ public class MovieStore {
         booksTitlesWithTranslations.put("AV", avengersTranslations);
         booksTitlesWithTranslations.put("FL", flashTranslations);
 
+        //added
         booksTitlesWithTranslations.values().stream()
                 .flatMap(i -> i.stream())
                 .forEach(i -> System.out.print(i + "!"));
