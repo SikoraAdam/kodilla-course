@@ -4,28 +4,46 @@ import java.util.*;
 
 public class FlightsSearch {
 
-    public static void main(String args[]) {
+    Map<Flight, Boolean> returnFlight = new HashMap<>();
 
-        Flight flight1 = new Flight("WarsawAirport", "CracovAirport");
-        Flight flight2 = new Flight("GdyniaAirport", "WarsawAirport");
-
+    public Map<Flight, Boolean> selectedFlight() {
+        return returnFlight;
     }
 
     public void findFlight(Flight flight) {
 
-        Map<String, Boolean> airportsAvaiable = new HashMap<>();
-        airportsAvaiable.put("WarsawAirport", true);
-        airportsAvaiable.put("CracovAirport", false);
+        System.out.println("Searching for: " + flight.getArrivalAirport());
 
-        try {
-            for (String airport : airportsAvaiable.keySet()) {
-                if (airportsAvaiable.containsKey(flight.getArrivalAirport()) && airportsAvaiable.containsKey(flight.getDepartureAirport()))
-                    System.out.println("Flight available.");
-                else
-                    System.out.println("Flight not available.");
-            }
-        } catch (Exception e){
-            System.out.println(e);
+        if(!selectedFlight().keySet().contains(flight.getArrivalAirport()) || !selectedFlight().keySet().contains(flight.getDepartureAirport()))
+        {
+            System.out.println("Airport found.");
+        }
+        else
+        {
+            System.out.println("Airport not found.");
+            throw new RouteNotFoundException();
         }
     }
+
+    public static void main(String args[]) {
+
+        Flight flight1 = new Flight("WarsawAirport", "CracovAirport");
+        Flight flight2 = new Flight("GdyniaAirport", "WarsawAirport");
+        Flight flight3 = new Flight("CracovAirport", "GdyniaAirport");
+
+        FlightsSearch searchedFlight = new FlightsSearch();
+
+        searchedFlight.selectedFlight().put(flight1, true);
+        searchedFlight.selectedFlight().put(flight2, false);
+
+        searchedFlight.findFlight(flight1);
+        searchedFlight.findFlight(flight2);
+        searchedFlight.findFlight(flight3);
+        searchedFlight.findFlight(new Flight("WarsawAirport", "Kazachstan"));
+
+        System.out.println();
+
+
+    }
+
 }

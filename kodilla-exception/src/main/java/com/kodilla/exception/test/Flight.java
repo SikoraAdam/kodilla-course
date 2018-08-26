@@ -1,5 +1,6 @@
 package com.kodilla.exception.test;
 
+
 public class Flight {
 
     String departureAirport;
@@ -18,5 +19,13 @@ public class Flight {
         return arrivalAirport;
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }
