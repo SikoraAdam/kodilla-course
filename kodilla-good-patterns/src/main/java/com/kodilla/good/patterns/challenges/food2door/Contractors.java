@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Contractors {
 
-    Map<String, Company> contractors = new HashMap<>();
+    private Map<String, Company> contractors = new HashMap<>();
 
     public Contractors(Map<String, Company> contractors) {
         this.contractors = contractors;

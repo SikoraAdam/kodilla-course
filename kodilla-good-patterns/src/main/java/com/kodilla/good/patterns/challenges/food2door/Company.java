@@ -2,9 +2,9 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 public class Company {
 
-    String name;
-    String address;
-    String NIP;
+    private String name;
+    private String address;
+    private String NIP;
 
     public Company(String name, String address, String NIP) {
         this.name = name;
@@ -22,5 +22,12 @@ public class Company {
 
     public String getNIP() {
         return NIP;
+    }
+
+    public Product process(Order order){
+        Product productOrdered = order.getProduct();
+        double price = productOrdered.getPrice() * productOrdered.getQuantity();
+
+        return null;
     }
 }
