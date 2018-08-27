@@ -1,9 +1,11 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.modul_9_2.order;
+
+import com.kodilla.good.patterns.challenges.modul_9_2.user.User;
 
 public class OrderDto {
 
-    User user;
-    boolean isBought;
+    private User user;
+    private boolean isBought;
 
     public OrderDto(User user, boolean isBought) {
         this.user = user;

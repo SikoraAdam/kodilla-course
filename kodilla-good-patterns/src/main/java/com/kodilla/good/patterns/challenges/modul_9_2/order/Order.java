@@ -1,14 +1,16 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.modul_9_2.order;
+
+import com.kodilla.good.patterns.challenges.modul_9_2.user.User;
 
 import java.time.*;
 
 public class Order {
 
-    int orderId;
-    double requiredPayment;
-    double aquiredPayment;
-    User buyer;
-    LocalDate dateOfOrder;
+    private int orderId;
+    private double requiredPayment;
+    private double aquiredPayment;
+    private User buyer;
+    private LocalDate dateOfOrder;
 
     public Order(int orderId, double requiredPayment, double aquiredPayment, User buyer, LocalDate dateOfOrder) {
         this.orderId = orderId;

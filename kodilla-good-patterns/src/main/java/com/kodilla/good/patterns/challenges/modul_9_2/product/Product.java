@@ -1,12 +1,10 @@
-package com.kodilla.good.patterns.challenges;
-
-import java.math.*;
+package com.kodilla.good.patterns.challenges.modul_9_2.product;
 
 public class Product {
 
-    String productName;
-    int pruductId;
-    double productPrice;
+    private String productName;
+    private int pruductId;
+    private double productPrice;
 
     public Product(String productName, int pruductId, double productPrice) {
         this.productName = productName;

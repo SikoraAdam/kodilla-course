@@ -1,13 +1,13 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.modul_9_2.user;
 
 public class User {
 
-    String userName;
-    String firstName;
-    String lastName;
-    String address;
-    String mail;
-    String accountNumber;
+    private String userName;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String mail;
+    private String accountNumber;
 
     public User(String userName, String firstName, String lastName, String address, String mail, String accountNumber) {
         this.userName = userName;
