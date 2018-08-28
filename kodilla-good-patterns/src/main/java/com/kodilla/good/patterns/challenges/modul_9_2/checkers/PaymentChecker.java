@@ -5,6 +5,7 @@ import com.kodilla.good.patterns.challenges.modul_9_2.order.Order;
 public class PaymentChecker {
 
     private String comment;
+    private static final int NO_PAYMENT = 0;
 
     public String getComment() {
         return comment;
@@ -26,10 +27,9 @@ public class PaymentChecker {
         }
         else
         {
-            if(order.getAquiredPayment() < 0 || order.getRequiredPayment() < 0)
+            if(order.getAquiredPayment() < NO_PAYMENT || order.getRequiredPayment() < NO_PAYMENT)
             {
-                comment = "SYSTEM ERROR";
-                throw new IncorrectValueException();
+                throw new IncorrectValueException("SYSTEM ERROR");
             }
             else {
                 comment = "No payment acquired.";

@@ -2,9 +2,9 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 public class Order {
 
-    Company company;
-    Product product;
-    int orderId;
+    private Company company;
+    private Product product;
+    private int orderId;
 
     public Order(Company company, Product product, int orderId) {
         this.company = company;

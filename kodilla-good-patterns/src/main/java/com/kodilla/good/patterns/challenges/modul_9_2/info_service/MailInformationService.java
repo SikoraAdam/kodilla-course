@@ -11,12 +11,13 @@ public class MailInformationService implements InformationService {
     @Override
     public void informAboutOrder(User user, Order order) {
 
+        boolean paymentStatus = paymentChecker.checkPayment(order);
+
         System.out.println("Sending mail notification to: " + user.getUserName() + " about order " + order.getOrderId());
-        if (paymentChecker.checkPayment(order)) {
-            System.out.println(paymentChecker.getComment());
+        System.out.println(paymentChecker.getComment());
+        if (paymentStatus) {
             System.out.println("Order in progress");
         } else {
-            System.out.println(paymentChecker.getComment());
             System.out.println("Order waiting for payment.");
         }
 

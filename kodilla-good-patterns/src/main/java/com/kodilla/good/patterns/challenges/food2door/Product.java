@@ -2,9 +2,9 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 public class Product {
 
-    String name;
-    int quantity;
-    int price;
+    private String name;
+    private int quantity;
+    private int price;
 
 
     public Product(String name, int quantity, int price) {

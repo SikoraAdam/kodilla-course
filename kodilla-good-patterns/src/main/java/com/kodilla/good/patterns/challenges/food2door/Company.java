@@ -2,9 +2,9 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 public class Company {
 
-    String name;
-    String address;
-    String NIP;
+    private String name;
+    private String address;
+    private String NIP;
 
     public Company(String name, String address, String NIP) {
         this.name = name;
