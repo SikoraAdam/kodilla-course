@@ -1,8 +1,8 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.order_repository;
+package com.kodilla.good.patterns.challenges.allegro.order.repository;
 
-import com.kodilla.good.patterns.challenges.modul_9_2.order.Order;
-import com.kodilla.good.patterns.challenges.modul_9_2.user.User;
-import com.kodilla.good.patterns.challenges.modul_9_2.product.Product;
+import com.kodilla.good.patterns.challenges.allegro.order.Order;
+import com.kodilla.good.patterns.challenges.allegro.user.User;
+import com.kodilla.good.patterns.challenges.allegro.product.Product;
 
 public class ItemOrderRepository implements OrderRepository {
 

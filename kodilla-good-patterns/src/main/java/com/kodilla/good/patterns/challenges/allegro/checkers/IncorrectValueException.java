@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.checkers;
+package com.kodilla.good.patterns.challenges.allegro.checkers;
 
 public class IncorrectValueException extends RuntimeException {
 

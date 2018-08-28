@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.checkers;
+package com.kodilla.good.patterns.challenges.allegro.checkers;
 
-import com.kodilla.good.patterns.challenges.modul_9_2.order.Order;
+import com.kodilla.good.patterns.challenges.allegro.order.Order;
 
 public class PaymentChecker {
 

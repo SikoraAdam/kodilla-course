@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.user;
+package com.kodilla.good.patterns.challenges.allegro.user;
 
 public class User {
 

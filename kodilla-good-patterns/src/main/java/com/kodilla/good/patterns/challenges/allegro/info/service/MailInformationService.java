@@ -1,8 +1,8 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.info_service;
+package com.kodilla.good.patterns.challenges.allegro.info.service;
 
-import com.kodilla.good.patterns.challenges.modul_9_2.order.Order;
-import com.kodilla.good.patterns.challenges.modul_9_2.checkers.PaymentChecker;
-import com.kodilla.good.patterns.challenges.modul_9_2.user.User;
+import com.kodilla.good.patterns.challenges.allegro.order.Order;
+import com.kodilla.good.patterns.challenges.allegro.checkers.PaymentChecker;
+import com.kodilla.good.patterns.challenges.allegro.user.User;
 
 public class MailInformationService implements InformationService {
 

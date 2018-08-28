@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.order;
+package com.kodilla.good.patterns.challenges.allegro.order;
 
-import com.kodilla.good.patterns.challenges.modul_9_2.checkers.PaymentChecker;
+import com.kodilla.good.patterns.challenges.allegro.checkers.PaymentChecker;
 
 public class ItemOrderService implements OrderService {
 

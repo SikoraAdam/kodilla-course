@@ -1,10 +1,10 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.product;
+package com.kodilla.good.patterns.challenges.allegro.product;
 
-import com.kodilla.good.patterns.challenges.modul_9_2.info_service.InformationService;
-import com.kodilla.good.patterns.challenges.modul_9_2.order.OrderDto;
-import com.kodilla.good.patterns.challenges.modul_9_2.order.OrderService;
-import com.kodilla.good.patterns.challenges.modul_9_2.order.OrderSummary;
-import com.kodilla.good.patterns.challenges.modul_9_2.order_repository.OrderRepository;
+import com.kodilla.good.patterns.challenges.allegro.info.service.InformationService;
+import com.kodilla.good.patterns.challenges.allegro.order.OrderDto;
+import com.kodilla.good.patterns.challenges.allegro.order.OrderService;
+import com.kodilla.good.patterns.challenges.allegro.order.OrderSummary;
+import com.kodilla.good.patterns.challenges.allegro.order.repository.OrderRepository;
 
 public class ProductOrderService {
 

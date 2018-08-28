@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.modul_9_2.order;
+package com.kodilla.good.patterns.challenges.allegro.order;
 
-import com.kodilla.good.patterns.challenges.modul_9_2.user.User;
+import com.kodilla.good.patterns.challenges.allegro.user.User;
 
 public class OrderDto {
 
