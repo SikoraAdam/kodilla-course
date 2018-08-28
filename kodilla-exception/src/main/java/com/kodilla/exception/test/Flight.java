@@ -1,6 +1,8 @@
 package com.kodilla.exception.test;
 
 
+import java.util.Objects;
+
 public class Flight {
 
     String departureAirport;
@@ -20,12 +22,16 @@ public class Flight {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Flight)) return false;
+        Flight flight = (Flight) o;
+        return Objects.equals(getDepartureAirport(), flight.getDepartureAirport()) &&
+                Objects.equals(getArrivalAirport(), flight.getArrivalAirport());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(getDepartureAirport(), getArrivalAirport());
     }
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class SearchingFlightClass {
 
-    Map<Flight, Boolean> returnFlight = new HashMap<>();
+    Map<Flight, Boolean> returnFlight;
 
     public SearchingFlightClass(Map<Flight, Boolean> returnFlight) {
         this.returnFlight = returnFlight;
@@ -15,7 +15,16 @@ public class SearchingFlightClass {
         return returnFlight;
     }
 
-    public void findFlight(Flight flight) {
+
+
+    public boolean findFlight(Flight flight) {
+
+        if(!returnFlight.containsKey(flight))
+        {
+            throw new RouteNotFoundException("Flight not found.");
+        }
+
+
 
 
         System.out.println("Searching for flight from " + flight.getDepartureAirport() + " to " + flight.getArrivalAirport());
@@ -23,7 +32,7 @@ public class SearchingFlightClass {
 
         for (Map.Entry<Flight, Boolean> entry : getReturnFlight().entrySet()) {
 
-            if (entry.getKey().getDepartureAirport() == flight.getDepartureAirport()
+            if (entry.getKey().getDepartureAirport().equals(flight.getDepartureAirport())
                     && entry.getKey().getArrivalAirport() == flight.getArrivalAirport()) {
                 System.out.println(entry.getValue() ? "Flight available." : "Flight not available.");
                 airportExist = true;
