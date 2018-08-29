@@ -9,29 +9,17 @@ public class FlightsSearch {
         Flight flight1 = new Flight("WarsawAirport", "CracovAirport");
         Flight flight2 = new Flight("GdyniaAirport", "WarsawAirport");
         Flight flight3 = new Flight("CracovAirport", "GdyniaAirport");
+        Flight flight4 = new Flight("WarsawAirport", "KazachstanAirport");
 
-        //FlightsSearch searchedFlight = new FlightsSearch();
-        Map<Flight, Boolean> returnFlight = new LinkedHashMap<Flight, Boolean>();
-        returnFlight.put(new Flight("WarsawAirport", "CracovAirport"), true);
-        returnFlight.put(new Flight("GdyniaAirport", "WarsawAirport"), false);
+        Map<Flight, Boolean> knownFlights = new HashMap();
+        knownFlights.put(flight1, true);
+        knownFlights.put(flight2, false);
 
-        SearchingFlightClass searchingFlight = new SearchingFlightClass(returnFlight);
+        SearchingFlightClass flightsSearched = new SearchingFlightClass(knownFlights);
 
-        searchingFlight.findFlight(new Flight("WarsawAirport", "CracovAirport"));
-        searchingFlight.findFlight(new Flight("GdyniaAirport", "WarsawAirport"));
-        searchingFlight.findFlight(new Flight("CracovAirport", "GdyniaAirport"));
-        searchingFlight.findFlight(new Flight("WarsawAirport", "Kazachstan"));
-
-
-
-        /*searchedFlight.findFlight(flight1);
-        searchedFlight.findFlight(flight2);
-        searchedFlight.findFlight(flight3);
-        searchedFlight.findFlight(new Flight("WarsawAirport", "Kazachstan"));*/
+        flightsSearched.findFlight(flight1);
+        flightsSearched.findFlight(flight2);
+        flightsSearched.findFlight(flight3);
+        flightsSearched.findFlight(flight4);
     }
-
-
-
-
-
 }
