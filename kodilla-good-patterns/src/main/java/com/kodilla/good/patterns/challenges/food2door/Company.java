@@ -23,11 +23,4 @@ public class Company {
     public String getNIP() {
         return NIP;
     }
-
-    public Product process(Order order){
-        Product productOrdered = order.getProduct();
-        double price = productOrdered.getPrice() * productOrdered.getQuantity();
-
-        return null;
-    }
 }
