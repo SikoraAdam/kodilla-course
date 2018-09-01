@@ -20,7 +20,5 @@ public class Order {
         return orderId;
     }
 
-    public double getTotalCost() {
-        return totalCost;
-    }
+    public double getTotalCost() { return totalCost; }
 }
