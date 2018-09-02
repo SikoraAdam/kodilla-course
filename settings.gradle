@@ -1,3 +1,4 @@
+rootProject.name = 'kodilla-spring'
 include 'kodilla-testing'
 include 'kodilla-stream'
 include 'kodilla-exception'
