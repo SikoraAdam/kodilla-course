@@ -7,36 +7,33 @@ import org.springframework.stereotype.Component;
 public class Calculator {
 
     @Autowired
-    public Display display()
-    {
-        return new Display();
-    }
+    public Display display;
 
     public double add(double a, double b)
     {
         double result = a+b;
-        display().displayValue(result);
+        display.displayValue(result);
         return result;
     }
 
     public double sub(double a, double b)
     {
         double result = a-b;
-        display().displayValue(result);
+        display.displayValue(result);
         return result;
     }
 
     public double mul(double a, double b)
     {
         double result = a*b;
-        display().displayValue(result);
+        display.displayValue(result);
         return result;
     }
 
     public double div(double a, double b)
     {
         double result = a/b;
-        display().displayValue(result);
+        display.displayValue(result);
         return result;
     }
 
