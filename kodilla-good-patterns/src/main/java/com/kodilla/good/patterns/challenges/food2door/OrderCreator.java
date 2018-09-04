@@ -5,16 +5,16 @@ public class OrderCreator {
     private Company company;
     private double totalCost;
     private int orderId;
-    private String address;
+    private String deliveryAddress;
 
     public Order createOrder()
     {
         company = new Company("ExtraFoodShop", "St.Spirit 12", "123456789");
         totalCost = 15.20;
         orderId = 123;
-        address = "St.Coconut 12";
+        deliveryAddress = "St.Coconut 12";
 
-        return new Order(company, orderId, address, totalCost);
+        return new Order(company, orderId, deliveryAddress, totalCost);
     }
 
     public Company getCompany() {
@@ -29,7 +29,7 @@ public class OrderCreator {
         return orderId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDeliveryAddress() {
+        return deliveryAddress;
     }
 }
