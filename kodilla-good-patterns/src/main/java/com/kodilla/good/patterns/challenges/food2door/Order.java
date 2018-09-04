@@ -6,13 +6,14 @@ public class Order {
     private double totalCost;
     private int orderId;
     private String address;
-    AvailableCompanies availableCompanies;
+    private AvailableCompanies availableCompanies;
 
-    public Order(Company company, int orderId, String address, double totalCost) {
+    public Order(Company company, int orderId, String address, double totalCost, AvailableCompanies availableCompanies) {
         this.company = company;
         this.orderId = orderId;
         this.totalCost = totalCost;
         this.address = address;
+        this.availableCompanies = availableCompanies;
     }
 
     public Company getCompany() {
@@ -33,13 +34,6 @@ public class Order {
         return availableCompanies;
     }
 
-    public enum AvailableCompanies
-    {
-        EXTRA_FOOD_SHOP,
 
-        HEALTHY_SHOP,
-
-        GLUTEN_FREE_SHOP
-    }
 
 }

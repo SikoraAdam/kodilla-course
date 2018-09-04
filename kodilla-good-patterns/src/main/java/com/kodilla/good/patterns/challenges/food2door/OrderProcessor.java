@@ -3,34 +3,23 @@ package com.kodilla.good.patterns.challenges.food2door;
 
 public class OrderProcessor {
 
-    Order order;
-    OrderCreator orderCreator;
-    OrderProcessor orderProcessor = new OrderProcessor(order);
+    private ExtraFoodShop extraFoodShop;
 
-    public OrderProcessor(Order order) {
-        this.order = order;
+    public OrderProcessor(ExtraFoodShop extraFoodShop) {
+        this.extraFoodShop = extraFoodShop;
     }
 
-    public Order getOrder() {
-        return orderCreator.createOrder();
-    }
-
-
-    public void process()
-    {
-        System.out.println("Processing...");
-    }
-
-    public void orderProcessing()
+    public void process(Order order)
     {
         switch (order.getAvailableCompanies())
         {
-            case EXTRA_FOOD_SHOP: this.orderProcessor.process();
+            case EXTRA_FOOD_SHOP: this.extraFoodShop.processOrder(order); //do sklepu
                 break;
-            case HEALTHY_SHOP: this.orderProcessor.process();
+            case HEALTHY_SHOP:
                 break;
-            case GLUTEN_FREE_SHOP: this.orderProcessor.process();
+            case GLUTEN_FREE_SHOP:
                 break;
         }
     }
+
 }
