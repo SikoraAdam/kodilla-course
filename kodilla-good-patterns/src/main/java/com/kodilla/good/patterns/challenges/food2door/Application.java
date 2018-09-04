@@ -5,6 +5,8 @@ public class Application {
     public static void main(String[] args) {
 
         OrderCreator orderCreator = new OrderCreator();
-        orderCreator.createOrder();
+        Order order = orderCreator.createOrder();
+        OrderProcessor orderProcessor = new OrderProcessor(order);
+        orderProcessor.orderProcessing();
     }
 }

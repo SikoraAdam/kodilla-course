@@ -7,29 +7,18 @@ public class OrderCreator {
     private int orderId;
     private String deliveryAddress;
 
+    OrderDetails orderDetails =
+            new OrderDetails(new Company("ExtraFoodShop", "St.Spirit 12", "123456789"),
+                    15.20, 123, "St.Coconut 12");
+
     public Order createOrder()
     {
-        company = new Company("ExtraFoodShop", "St.Spirit 12", "123456789");
-        totalCost = 15.20;
-        orderId = 123;
-        deliveryAddress = "St.Coconut 12";
+        company = orderDetails.getCompany();
+        totalCost = orderDetails.getTotalCost();
+        orderId = orderDetails.getOrderId();
+        deliveryAddress = orderDetails.getDeliveryAddress();
 
         return new Order(company, orderId, deliveryAddress, totalCost);
     }
 
-    public Company getCompany() {
-        return company;
-    }
-
-    public double getTotalCost() {
-        return totalCost;
-    }
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public String getDeliveryAddress() {
-        return deliveryAddress;
-    }
 }

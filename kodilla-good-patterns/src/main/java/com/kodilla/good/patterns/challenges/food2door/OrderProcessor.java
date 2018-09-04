@@ -5,6 +5,7 @@ public class OrderProcessor {
 
     Order order;
     OrderCreator orderCreator;
+    OrderProcessor orderProcessor = new OrderProcessor(order);
 
     public OrderProcessor(Order order) {
         this.order = order;
@@ -14,10 +15,8 @@ public class OrderProcessor {
         return orderCreator.createOrder();
     }
 
-    OrderProcessor orderProcessor = new OrderProcessor();
 
-
-    public void process(Order order)
+    public void process()
     {
         System.out.println("Processing...");
     }
@@ -26,11 +25,11 @@ public class OrderProcessor {
     {
         switch (order.getAvailableCompanies())
         {
-            case EXTRA_FOOD_SHOP: this.orderProcessor.process(order);
+            case EXTRA_FOOD_SHOP: this.orderProcessor.process();
                 break;
-            case HEALTHY_SHOP: this.orderProcessor.process(order);
+            case HEALTHY_SHOP: this.orderProcessor.process();
                 break;
-            case GLUTEN_FREE_SHOP: this.orderProcessor.process(order);
+            case GLUTEN_FREE_SHOP: this.orderProcessor.process();
                 break;
         }
     }
