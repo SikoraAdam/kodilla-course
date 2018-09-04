@@ -6,11 +6,11 @@ public class OrderDetails {
     private int orderId;
     private String deliveryAddress;
 
-    public OrderDetails(Company company, double totalCost, int orderId, String deliveryAddress) {
-        this.company = company;
-        this.totalCost = totalCost;
-        this.orderId = orderId;
-        this.deliveryAddress = deliveryAddress;
+    public OrderDetails() {
+        this.company = new Company("ExtraFoodShop", "St.Spirit 12", "123456789");
+        this.totalCost = 15.20;
+        this.orderId = 123;
+        this.deliveryAddress = "St.Coconut 12";
     }
 
     public Company getCompany() {

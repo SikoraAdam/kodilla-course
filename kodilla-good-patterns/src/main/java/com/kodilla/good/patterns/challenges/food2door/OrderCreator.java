@@ -6,10 +6,7 @@ public class OrderCreator {
     private double totalCost;
     private int orderId;
     private String deliveryAddress;
-
-    OrderDetails orderDetails =
-            new OrderDetails(new Company("ExtraFoodShop", "St.Spirit 12", "123456789"),
-                    15.20, 123, "St.Coconut 12");
+    private OrderDetails orderDetails = new OrderDetails();
 
     public Order createOrder()
     {
