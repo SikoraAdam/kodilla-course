@@ -1,9 +1,8 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
-public class ExtraFoodShop implements Shop {
-
+public class GlutenFreeShop implements Shop {
     @Override
     public void processOrder(Order order) {
-        System.out.println("ExtraFoodShop order - processing...");
+        System.out.println("GlutenFreeShop order - processing...");
     }
 }

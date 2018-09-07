@@ -5,12 +5,14 @@ public class OrderDetails {
     private double totalCost;
     private int orderId;
     private String deliveryAddress;
+    private AvailableCompanies availableCompanies;
 
     public OrderDetails() {
         this.company = new Company("ExtraFoodShop", "St.Spirit 12", "123456789");
         this.totalCost = 15.20;
         this.orderId = 123;
         this.deliveryAddress = "St.Coconut 12";
+        this.availableCompanies = AvailableCompanies.GLUTEN_FREE_SHOP;
     }
 
     public Company getCompany() {
@@ -27,5 +29,9 @@ public class OrderDetails {
 
     public String getDeliveryAddress() {
         return deliveryAddress;
+    }
+
+    public AvailableCompanies getAvailableCompanies() {
+        return availableCompanies;
     }
 }
