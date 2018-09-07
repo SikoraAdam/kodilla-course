@@ -1,4 +1,6 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.shops;
+
+import com.kodilla.good.patterns.challenges.food2door.order.Order;
 
 public class HealthyShop implements Shop {
     @Override

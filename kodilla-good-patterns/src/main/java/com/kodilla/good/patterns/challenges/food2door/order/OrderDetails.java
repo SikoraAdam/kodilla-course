@@ -1,4 +1,7 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.order;
+
+import com.kodilla.good.patterns.challenges.food2door.companies.AvailableCompanies;
+import com.kodilla.good.patterns.challenges.food2door.companies.Company;
 
 public class OrderDetails {
     private Company company;

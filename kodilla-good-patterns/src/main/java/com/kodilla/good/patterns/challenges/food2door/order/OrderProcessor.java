@@ -1,5 +1,9 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.order;
 
+
+import com.kodilla.good.patterns.challenges.food2door.shops.ExtraFoodShop;
+import com.kodilla.good.patterns.challenges.food2door.shops.GlutenFreeShop;
+import com.kodilla.good.patterns.challenges.food2door.shops.HealthyShop;
 
 public class OrderProcessor {
 
