@@ -6,7 +6,7 @@ public class LoggerTestSuite {
 
     @BeforeClass
     public static void newLog() {
-        Logger.getInstance().log("log 1");
+        Logger.getInstance().log("This is log 1");
     }
 
     @Test
@@ -16,6 +16,6 @@ public class LoggerTestSuite {
         String newLog = Logger.getInstance().getLastLog();
         System.out.println("New log: " + newLog);
         //Then
-        Assert.assertEquals("log 1", newLog);
+        Assert.assertEquals("This is log 1", newLog);
     }
 }
