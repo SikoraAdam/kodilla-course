@@ -37,7 +37,12 @@ public class Item {
         this.id = id;
     }
 
-    @NotNull
+    @OneToMany(
+            targetEntity = Product.class,
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     @Column(name = "PRODUCT")
     public Product getProduct() {
         return product;
