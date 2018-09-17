@@ -23,7 +23,6 @@ public class InvoiceDaoTestSuite {
 
     @Test
     public void testInvoiceDaoSave() {
-
         //Given
         Item item1 = new Item(BigDecimal.valueOf(15.0),3,BigDecimal.valueOf(45.0));
         Item item2 = new Item(BigDecimal.valueOf(30.0),6,BigDecimal.valueOf(180.0));
