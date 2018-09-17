@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "INVOICE")
-        public class Invoice {
+public class Invoice {
     private int id;
     private String number;
     private List<Item> items = new ArrayList<>();
