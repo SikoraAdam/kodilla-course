@@ -1,6 +1,19 @@
 package com.kodilla.hibernate.invoice.dao;
 
+import org.junit.Test;
+
 public class InvoiceDaoTestSuite {
 
-    //do zrobienia
+    @Test
+    public void testInvoiceDaoSave() {
+
+        //Given
+
+        //When
+
+        //Then
+
+        //CleanUp
+
+    }
 }
