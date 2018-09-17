@@ -1,4 +1,53 @@
 package com.kodilla.hibernate.invoice;
 
-public class Invoice {
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import java.util.*;
+
+@Entity
+@Table(name = "INVOICE")
+        public class Invoice {
+    private int id;
+    private String number;
+    private List<Item> items = new ArrayList<>();
+
+    public Invoice(){
+
+    }
+
+    public Invoice(String number) {
+        this.number = number;
+    }
+
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "ID", unique = true)
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @NotNull
+    @Column(name = "NUMBER")
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    @Column(name = "ITEMS")
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 }
