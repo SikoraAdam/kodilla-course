@@ -9,6 +9,5 @@ import java.util.List;
 
 @Transactional
 @Repository
-public interface InvoiceDao extends CrudRepository<Invoice, String> {
-    List<Invoice> findByNumber(String number);
+public interface InvoiceDao extends CrudRepository<Invoice, Integer> {
 }
