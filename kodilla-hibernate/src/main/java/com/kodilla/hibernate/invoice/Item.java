@@ -37,7 +37,7 @@ public class Item {
         this.id = id;
     }
 
-    @Column(name = "PRODUCT_ID")
+    @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
@@ -73,7 +73,7 @@ public class Item {
         this.value = value;
     }
 
-    @Column(name = "INVOICE_ID")
+    @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
     }
