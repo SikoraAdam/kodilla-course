@@ -39,8 +39,8 @@ public class InvoiceDaoTestSuite {
         //When
         productDao.save(product1);
         productDao.save(product2);
-        int productId = invoice.getId();
         invoiceDao.save(invoice);
+        int productId = invoice.getId();
         int invoiceId = invoice.getId();
 
         //Then

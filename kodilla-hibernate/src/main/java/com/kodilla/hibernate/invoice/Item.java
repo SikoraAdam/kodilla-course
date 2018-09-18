@@ -38,6 +38,7 @@ public class Item {
     }
 
     @JoinColumn(name = "PRODUCT_ID")
+    @ManyToOne
     public Product getProduct() {
         return product;
     }
@@ -74,6 +75,7 @@ public class Item {
     }
 
     @JoinColumn(name = "INVOICE_ID")
+    @ManyToOne
     public Invoice getInvoice() {
         return invoice;
     }
