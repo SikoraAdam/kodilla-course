@@ -9,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany(){
@@ -56,6 +60,64 @@ public class CompanyDaoTestSuite {
             companyDao.delete(softwareMachineId);
             companyDao.delete(dataMaestersId);
             companyDao.delete(greyMatterId);
+        } catch (Exception e) {
+            //do nothing
+        }
+    }
+
+    @Test
+    public void testNamedQueries() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieSmith = new Employee("Stephanie", "Smith");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company dataMatter = new Company("Data Matter");
+
+        softwareMachine.getEmployees().add(johnSmith);
+        dataMaesters.getEmployees().add(stephanieSmith);
+        dataMaesters.getEmployees().add(lindaKovalsky);
+        dataMatter.getEmployees().add(johnSmith);
+        dataMatter.getEmployees().add(lindaKovalsky);
+
+        johnSmith.getCompanies().add(softwareMachine);
+        johnSmith.getCompanies().add(dataMatter);
+        stephanieSmith.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(dataMatter);
+
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMaesters);
+        int dataMaestersId = dataMaesters.getId();
+        companyDao.save(dataMatter);
+        int dataMatterId = dataMatter.getId();
+
+        employeeDao.save(johnSmith);
+        int johnSmithId = johnSmith.getId();
+        employeeDao.save(stephanieSmith);
+        int stephanieSmithId = stephanieSmith.getId();
+        employeeDao.save(lindaKovalsky);
+        int lindaKovalskyId = lindaKovalsky.getId();
+
+        //When
+        List<Employee> findByLastname = employeeDao.retrieveEmployeeByLastname("Smith");
+        List<Company> findCompaniesStartingWith = companyDao.retrieveCompaniesStartingWith("Dat");
+
+        //Then
+        Assert.assertEquals(2, findByLastname.size());
+        Assert.assertEquals(2, findCompaniesStartingWith.size());
+
+        //CleanUp
+        try {
+            companyDao.delete(softwareMachineId);
+            companyDao.delete(dataMaestersId);
+            companyDao.delete(dataMatterId);
+            companyDao.delete(johnSmithId);
+            companyDao.delete(stephanieSmithId);
+            companyDao.delete(lindaKovalskyId);
         } catch (Exception e) {
             //do nothing
         }
