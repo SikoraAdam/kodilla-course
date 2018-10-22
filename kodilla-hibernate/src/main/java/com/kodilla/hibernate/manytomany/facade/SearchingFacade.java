@@ -24,7 +24,6 @@ public class SearchingFacade {
     EmployeeDao employeeDao;
 
     public List<Company> findCompany (String field) throws SearchingException{
-
         List<Company> companies = companyDao.retrieveCompaniesWithStringInside(field);
 
         if(companies.isEmpty()){
