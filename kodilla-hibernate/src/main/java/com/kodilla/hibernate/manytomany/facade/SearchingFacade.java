@@ -31,8 +31,6 @@ public class SearchingFacade {
             throw new SearchingException(SearchingException.ERR_NO_COMPANY);
         }
         return companies;
-
-
     }
 
     public List<Employee> findEmployee (String field) throws SearchingException {
