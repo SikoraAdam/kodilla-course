@@ -76,4 +76,6 @@ public class PizzaOrderTestSuite {
         //Then
         assertEquals(new BigDecimal(34), cost);
     }
+
+    //etc
 }
