@@ -24,23 +24,24 @@ public class SearchingFacade {
     EmployeeDao employeeDao;
 
     public List<Company> findCompany (String field) throws SearchingException{
-        if (!companyDao.retrieveCompaniesWithStringInside("%"+field+"%").isEmpty()) {
-            return companyDao.retrieveCompaniesWithStringInside("%"+field+"%");
-        }
-        else {
+
+        List<Company> companies = companyDao.retrieveCompaniesWithStringInside(field);
+
+        if(companies.isEmpty()){
             throw new SearchingException(SearchingException.ERR_NO_COMPANY);
         }
+        return companies;
 
 
     }
 
     public List<Employee> findEmployee (String field) throws SearchingException {
-        if (!employeeDao.retrieveEmployeesWithStringInside("%"+field+"%").isEmpty()) {
-            return employeeDao.retrieveEmployeesWithStringInside("%"+field+"%");
+        List<Employee> employees = employeeDao.retrieveEmployeesWithStringInside(field);
+
+        if(employees.isEmpty()){
+            throw new SearchingException(SearchingException.ERR_NO_EMPLOYEE);
         }
-        else {
-            throw new SearchingException((SearchingException.ERR_NO_EMPLOYEE));
-        }
+        return employees;
     }
 
 }

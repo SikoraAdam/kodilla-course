@@ -16,7 +16,7 @@ import java.util.List;
         @NamedNativeQuery(
                 name = "Company.retrieveCompaniesWithStringInside",
                 query = "SELECT * FROM COMPANIES " +
-                        "WHERE COMPANY_NAME LIKE :STRINGINSIDE",
+                        "WHERE COMPANY_NAME LIKE CONCAT('%',:STRINGINSIDE,'%')",
                 resultClass = Company.class
         )
 })
