@@ -28,4 +28,36 @@ public class HomeworkQueueTestSuite {
         assertEquals(3, ivoneEscobar.getUpdateCount());
         assertEquals(5, jessiePinkman.getUpdateCount());
     }
+
+    @Test
+    public void removeObserver() {
+        //Given
+        JavaDeveloperModuleTen moduleTen = new JavaDeveloperModuleTen();
+        User johnSmith = new User("John Smith");
+        User jessiePinkman = new User("Jessie Pinkman");
+        moduleTen.registerObserver(johnSmith);
+        moduleTen.registerObserver(jessiePinkman);
+        //When
+        moduleTen.removeObserver(johnSmith);
+
+        //Then
+        assertEquals(1, moduleTen.getObservers().size());
+    }
+
+    @Test
+    public void testUpdateForTwoObservers() {
+        //Given
+        JavaDeveloperModuleEleven moduleEleven = new JavaDeveloperModuleEleven();
+        JavaDeveloperModuleTen moduleTen = new JavaDeveloperModuleTen();
+        User jessiePinkman = new User("Jessie Pinkman");
+        moduleTen.registerObserver(jessiePinkman);
+        moduleEleven.registerObserver(jessiePinkman);
+        //When
+        moduleTen.addHomework("<<Module 10.1>>");
+        moduleTen.addHomework("<<Module 10.2>>");
+        moduleEleven.addHomework("<<Module 11.1>>");
+        moduleEleven.addHomework("<<Module 11.2>>");
+        //Then
+        assertEquals(4, jessiePinkman.getUpdateCount());
+    }
 }
