@@ -45,7 +45,7 @@ public class HomeworkQueueTestSuite {
     }
 
     @Test
-    public void testUpdateForTwoObservers() {
+    public void testUpdateForTwoModulesAndOneObserver() {
         //Given
         JavaDeveloperModuleEleven moduleEleven = new JavaDeveloperModuleEleven();
         JavaDeveloperModuleTen moduleTen = new JavaDeveloperModuleTen();
