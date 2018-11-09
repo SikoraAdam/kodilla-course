@@ -5,3 +5,5 @@ testy jednostkowe;
 Spring;
 Hibernate;
 wzorce projektowe;
+jdbc;
+stream;
