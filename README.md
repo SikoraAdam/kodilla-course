@@ -1,3 +1,9 @@
 # kodilla-course
 
-My Kodilla Course
+My Kodilla Course:
+testy jednostkowe;
+Spring;
+Hibernate;
+wzorce projektowe;
+jdbc;
+stream;
